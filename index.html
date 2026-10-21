@@ -605,7 +605,8 @@ function openLesson(k,a){
   const scr=el.querySelector(".screen.vid");
   if(scr){ const v=scr.querySelector("video"), play=()=>{scr.classList.add("tocando"); v.play()};
     scr.querySelector(".bigplay").onclick=play; scr.querySelector("img").onclick=play; }
-  el.querySelector('.li[aria-current="true"]')?.scrollIntoView({block:"nearest"});
+  // no celular a lista fica embaixo do vídeo: rolar até ela tiraria o vídeo da tela
+  if(matchMedia("(min-width:981px)").matches) el.querySelector('.li[aria-current="true"]')?.scrollIntoView({block:"nearest"});
 }
 function closeLesson(){ lesson=null; $("#player").querySelector("video")?.pause(); $("#player").hidden=true; }
 
