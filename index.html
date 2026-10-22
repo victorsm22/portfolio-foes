@@ -393,6 +393,24 @@ kbd{display:inline-flex;align-items:center;justify-content:center;min-width:26px
 .nx-mods .mod:focus-visible{outline:none}
 .nx-mods .mod:focus-visible .art{box-shadow:0 0 0 3px var(--cyan)}
 @media (max-width:1100px){.nx-side{display:none}}
+/* versão "capa limpa" (padrão desde 22/10/2026): a capa aparece inteira, sem sombra nem texto por cima,
+   para não esconder a logo e o design; título, dados e botões ficam embaixo. ?capa=sombra volta à outra. */
+.cat.limpa .cbar{height:auto;padding:12px var(--gut) 0}
+.cat.limpa .cbar-in{top:0;background:rgba(4,8,22,.8);border-color:rgba(255,255,255,.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.cat.limpa .cbar .ttl{opacity:1}
+.cat.limpa .cbar [data-pv]{opacity:1;pointer-events:auto}
+.cat.limpa .cbar #closeCat{background:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.cat.limpa .nx-hero{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;column-gap:48px;min-height:0;overflow:visible;padding-top:18px}
+.cat.limpa .nx-bg{position:relative;inset:auto;grid-column:1/-1;line-height:0;aspect-ratio:auto}
+.cat.limpa .nx-bg::before,.cat.limpa .nx-bg::after{display:none}
+.cat.limpa .nx-bg img{height:auto;max-height:none;object-fit:contain}
+.cat.limpa .nx-info{width:auto;max-width:860px;margin-top:0;padding-top:34px;padding-bottom:8px}
+.cat.limpa .nx-info h2{font-size:clamp(30px,3.4vw,54px);text-shadow:none}
+.cat.limpa .nx-info h2.longo{font-size:clamp(28px,2.9vw,46px)}
+.cat.limpa .nx-desc,.cat.limpa .nx-meta{text-shadow:none}
+.cat.limpa .nx-side{position:static;width:300px;margin-right:max(var(--gut),calc((100vw - 1360px)/2 + 10px));padding:18px 22px;border-radius:14px;background:var(--panel);border:1px solid var(--line)}
+.cat.limpa .nx-body{margin-top:0}
+@media (max-width:1100px){.cat.limpa .nx-hero{grid-template-columns:1fr}}
 @media (max-width:760px){
   .nx-hero{display:block;min-height:0}
   .nx-bg{position:relative;aspect-ratio:16/10}
@@ -844,6 +862,7 @@ function openCat(i){
   // corta na primeira frase, sem confundir "Dra." ou "Prof." com fim de frase
   const frase = (c.bio||"").split(/(?<!\b(?:Dr|Dra|Sr|Sra|Prof|Profa|Jr|St|Me|Ma|[A-Z])\.)(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÂÊÔÃÕ])/)[0] || "";
   const resumo = frase.length>230 ? frase.slice(0,frase.lastIndexOf(" ",220))+"…" : frase;
+  el.classList.toggle("limpa", !/[?&]capa=sombra\b/.test(location.search));
   el.innerHTML = bar(c,"closeCat","Projetos") + `
     <section class="nx-hero">
       <div class="nx-bg"><img src="${src(c.banner)}" alt="Capa do curso ${esc(c.product)}"></div>
