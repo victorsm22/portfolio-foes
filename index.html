@@ -339,6 +339,71 @@ kbd{display:inline-flex;align-items:center;justify-content:center;min-width:26px
 .rail-wrap:hover .arrow{opacity:1}
 @media (hover:none){.arrow{display:none}}
 .cat-foot{padding-block:50px 70px;margin-inline:10px;color:var(--dim);font-size:14px}
+
+/* ---------- página do projeto estilo Netflix ----------
+   Capa ocupando a tela com o título por cima, botões Assistir / Página de vendas,
+   fileiras deslizantes (módulos, peças) e o currículo no fim. */
+.cat .cbar{height:0;padding:0 var(--gut)}
+.cat .cbar-in{position:relative;top:12px;background:transparent;border-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;transition:background .3s,border-color .3s}
+.cat .cbar .ttl{opacity:0;transition:opacity .3s}
+.cat .cbar:not(.solid) [data-pv]{opacity:0;pointer-events:none}
+.cat .cbar:not(.solid) #closeCat{background:rgba(1,5,17,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.cat .cbar.solid .cbar-in{background:rgba(4,8,22,.8);border-color:rgba(255,255,255,.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.cat .cbar.solid .ttl{opacity:1}
+.nx-hero{position:relative;min-height:clamp(540px,54vw,820px);display:flex;align-items:flex-end;overflow:hidden}
+.nx-bg{position:absolute;inset:0}
+.nx-bg img{width:100%;height:100%;object-fit:cover;object-position:75% 30%;animation:nxin 1.4s var(--ease) both}
+@keyframes nxin{from{opacity:0;transform:scale(1.05)}to{opacity:1;transform:none}}
+.nx-bg::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--bg) 0%,rgba(1,5,17,.97) 22%,rgba(1,5,17,.82) 38%,rgba(1,5,17,.35) 56%,transparent 74%),linear-gradient(180deg,rgba(1,5,17,.55) 0%,transparent 22%)}
+.nx-bg::after{content:"";position:absolute;z-index:1;left:0;right:0;bottom:0;height:46%;background:linear-gradient(transparent,var(--bg))}
+.nx-pad{padding-left:max(var(--gut),calc((100vw - 1360px)/2 + 10px));padding-right:max(var(--gut),calc((100vw - 1360px)/2 + 10px))}
+.nx-info{position:relative;z-index:2;width:min(680px,100%);padding-bottom:clamp(44px,6vw,96px);animation:rise .8s .15s var(--ease) both}
+.nx-kind{display:flex;align-items:center;gap:10px;font:600 13px var(--f-display);letter-spacing:.42em;color:#dfe6f3;margin-bottom:14px}
+.nx-kind img{width:22px;height:22px}
+.nx-info h2.longo{font-size:clamp(34px,3.9vw,60px)}
+.nx-info h2{font-size:clamp(40px,5.4vw,86px);line-height:.95;font-weight:600;text-transform:uppercase;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.5);text-wrap:balance}
+.nx-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:20px;color:#d6deec;font:500 15px var(--f-body);text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.nx-meta .flag{width:18px;height:18px}
+.nx-meta i{width:4px;height:4px;border-radius:50%;background:#7d8aa6}
+.nx-meta .box{padding:1px 8px;border:1px solid rgba(255,255,255,.45);border-radius:4px;font-size:12.5px;letter-spacing:.04em}
+.nx-meta .novo{color:#46d369;font-weight:600}
+.nx-desc{margin:16px 0 0;max-width:60ch;color:#e3e9f4;font-size:17px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.nx-desc b{color:#fff;font-weight:600}
+.nx-acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.nx-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;height:54px;padding:0 30px 0 24px;border-radius:6px;font:600 18px var(--f-display);transition:background .2s,transform .2s}
+.nx-btn svg{width:24px;height:24px;flex:none}
+.nx-btn.play{background:#fff;color:#000}
+.nx-btn.play:hover{background:rgba(255,255,255,.8)}
+.nx-btn.sec{background:rgba(109,109,110,.7);color:#fff}
+.nx-btn.sec:hover{background:rgba(109,109,110,.45)}
+.nx-btn:active{transform:scale(.97)}
+.nx-side{position:absolute;z-index:2;right:max(var(--gut),calc((100vw - 1360px)/2 + 10px));bottom:clamp(44px,6vw,96px);width:290px;display:flex;flex-direction:column;gap:8px;font-size:14px;color:#8e9ab3;animation:rise .8s .3s var(--ease) both}
+.nx-side b{color:#e8edf6;font-weight:500}
+.nx-body{position:relative;z-index:2;margin-top:-18px}
+.nx-body .psec{padding-block:30px 4px}
+.nx-body .psec-head{margin-bottom:14px}
+.nx-body .psec-head h3{font:600 clamp(20px,1.8vw,26px) var(--f-display)}
+.nx-mods{padding-top:22px;padding-bottom:30px}
+.nx-mods .mod{flex:none;width:clamp(160px,15vw,220px);scroll-snap-align:start}
+.nx-mods.wide .mod{width:clamp(260px,24vw,350px)}
+.nx-mods .mod .art{border-radius:8px;transform-origin:center 60%}
+.nx-mods .mod:hover .art,.nx-mods .mod:focus-visible .art{transform:scale(1.07)}
+.nx-mods .mod .ep{position:absolute;left:8px;top:8px;z-index:1;padding:4px 9px;border-radius:4px;background:var(--pale);color:#020817;font:600 11px var(--f-display);letter-spacing:.03em}
+.nx-mods .mod .lbl b{display:block;font-weight:500;line-height:1.25}
+.nx-mods .mod:focus-visible{outline:none}
+.nx-mods .mod:focus-visible .art{box-shadow:0 0 0 3px var(--cyan)}
+@media (max-width:1100px){.nx-side{display:none}}
+@media (max-width:760px){
+  .nx-hero{display:block;min-height:0}
+  .nx-bg{position:relative;aspect-ratio:16/10}
+  .nx-bg::before{display:none}
+  .nx-bg img{object-position:70% 30%}
+  .nx-info{margin-top:-46px;padding-bottom:20px}
+  .nx-info h2{font-size:clamp(30px,9vw,44px)}
+  .nx-desc{font-size:15px}
+  .nx-acts{display:grid;grid-template-columns:1fr}
+  .nx-btn{height:48px;font-size:16px}
+}
 .cat-foot a{color:var(--blue-2)}
 
 /* ---------- aula ---------- */
@@ -541,6 +606,7 @@ const I = {
   right:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg>',
   globe:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><path d="M1.8 8h12.4M8 1.8c2 2.2 2 10.2 0 12.4M8 1.8c-2 2.2-2 10.2 0 12.4"/></svg>',
   vol:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2zM11.5 5.5a3.5 3.5 0 0 1 0 5"/></svg>',
+  info:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.5"/></svg>',
   check:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="8" cy="8" r="6.4" stroke-width="1.3"/><path d="m5.3 8.2 1.8 1.8 3.6-3.8"/></svg>',
   full:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4"/></svg>',
 };
@@ -757,10 +823,12 @@ function openCat(i){
     </section>` : "";
   const mods = c.modules.length ? `
     <section class="psec">
-      <div class="psec-head"><h3>Módulos do <span class="g">curso</span></h3><span class="cap">${c.modules.length} módulos · área de membros</span></div>
-      <div class="modules ${c.modShape==="wide"?"wide":""}">${c.modules.map((m,k)=>`<button class="mod" data-mod="${k}" aria-label="Abrir ${esc(m.label)}">
-        <div class="art"><img src="${src(m.id)}" alt="" loading="lazy"><span class="play">${I.play}</span></div>
-        <div class="lbl">${cron[m.n]?`<span class="mn">${esc(m.label)}</span>${esc(cron[m.n].titulo)}<small>${cron[m.n].aulas.length?`${cron[m.n].aulas.length} ${cron[m.n].aulas.length===1?"aula":"aulas"}`:"Complementar"}</small>`:`${esc(m.label)}<small>${esc(c.client)}</small>`}</div></button>`).join("")}</div>
+      <div class="psec-head"><h3>Módulos do <span class="g">curso</span></h3><span class="cap">${c.modules.length} módulos${nAulas?` · ${nAulas} aulas`:""}</span></div>
+      <div class="rail-wrap"><button class="arrow l" data-scroll="-1" aria-label="Voltar">${I.left}</button>
+      <div class="rail nx-mods ${c.modShape==="wide"?"wide":""}">${c.modules.map((m,k)=>`<button class="mod" data-mod="${k}" aria-label="Abrir ${esc(m.label)}${cron[m.n]?`: ${esc(cron[m.n].titulo)}`:""}">
+        <div class="art"><img src="${src(m.id)}" alt="" loading="${k<6?"eager":"lazy"}"><span class="play">${I.play}</span>${k===0&&c.videos?`<span class="ep">Aula 1 em vídeo</span>`:""}</div>
+        <div class="lbl">${cron[m.n]?`<span class="mn">${esc(m.label)}</span><b>${esc(cron[m.n].titulo)}</b><small>${cron[m.n].aulas.length?`${cron[m.n].aulas.length} ${cron[m.n].aulas.length===1?"aula":"aulas"}`:"Complementar"}</small>`:`<b>${esc(m.label)}</b>`}</div></button>`).join("")}</div>
+      <button class="arrow r" data-scroll="1" aria-label="Avançar">${I.right}</button></div>
     </section>` : "";
   const rows=c.rows.map((r,ri)=>`
     <section class="psec">
@@ -772,26 +840,31 @@ function openCat(i){
       </div>
     </section>`).join("");
   const el=$("#cat");
+  // resumo do topo: a primeira frase do currículo, curta como a sinopse da Netflix
+  // corta na primeira frase, sem confundir "Dra." ou "Prof." com fim de frase
+  const frase = (c.bio||"").split(/(?<!\b(?:Dr|Dra|Sr|Sra|Prof|Profa|Jr|St|Me|Ma|[A-Z])\.)(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÂÊÔÃÕ])/)[0] || "";
+  const resumo = frase.length>230 ? frase.slice(0,frase.lastIndexOf(" ",220))+"…" : frase;
   el.innerHTML = bar(c,"closeCat","Projetos") + `
-    <div class="wrap phero">
-      <div class="banner br"><img src="${src(c.banner)}" alt="Capa do curso ${esc(c.product)}"></div>
-      <div class="pinfo">
-        <img class="pcover" src="${src(c.poster)}" alt="">
-        <div>
-          <div class="loc cap">${flag(c.country)}${esc(c.country)} · ${esc(c.niche)}</div>
-          <h2>${esc(c.product)}</h2>
-          <p class="by">Curso de <b>${esc(c.client)}</b>${c.brand?` · ${esc(c.brand)}`:""}</p>
-        </div>
-        <div class="acts">${c.modules.length?`<button class="btn btn-pale" id="start">${I.play}Assistir módulo 1</button>`:c.videos?`<button class="btn btn-pale" id="start">${I.play}Assistir aula 1</button>`:""}
-          ${pageBtn(c,"btn-ghost","Abrir página de vendas")}</div>
+    <section class="nx-hero">
+      <div class="nx-bg"><img src="${src(c.banner)}" alt="Capa do curso ${esc(c.product)}"></div>
+      <div class="nx-info nx-pad">
+        <div class="nx-kind"><img src="assets/brand/icone.svg" alt="">CURSO</div>
+        <h2${c.product.length>26?' class="longo"':""}>${esc(c.product)}</h2>
+        <div class="nx-meta">${c.videos?`<span class="novo">Aula 1 disponível</span>`:""}${flag(c.country)}<span>${esc(c.country)}</span><i></i><span>${esc(c.niche)}</span>${c.modules.length?`<i></i><span>${c.modules.length} módulos</span>`:""}${nAulas?`<i></i><span>${nAulas} aulas</span>`:""}${c.platform?`<span class="box">${esc(c.platform)}</span>`:""}</div>
+        <p class="nx-desc">${resumo?esc(resumo):`Curso de <b>${esc(c.client)}</b>${c.brand?` · ${esc(c.brand)}`:""}.`}</p>
+        <div class="nx-acts">${c.modules.length||c.videos?`<button class="nx-btn play" id="start" type="button">${I.play}Assistir</button>`:""}${c.page?`<button class="nx-btn sec" type="button" data-pv="${i}">${I.info}Página de vendas</button>`:""}</div>
       </div>
-      <div class="facts">${facts.map(([k,v])=>`<div><span>${k}</span><b>${esc(v)}</b></div>`).join("")}</div>
-      ${about}${mods}${cronograma}${rows}
+      <div class="nx-side">${[["Especialista",c.client],["Marca",c.brand],["Plataforma",c.platform],["Investimento",c.price],["Peças no projeto",nPecas]].filter(f=>f[1]).map(([k,v])=>`<div><span>${k}:</span> <b>${esc(v)}</b></div>`).join("")}</div>
+    </section>
+    <div class="nx-body wrap">
+      ${mods}${cronograma}${rows}${about}
       <div class="cat-foot">${c.page?`Página no ar · <a href="${esc(c.page)}" target="_blank" rel="noopener">${esc(host(c.page))}</a>`:"Projeto entregue pela Foes Digital"}</div>
     </div>`;
   el.hidden=false; el.scrollTop=0; document.body.style.overflow="hidden"; $("#wall").classList.add("paused");
   $("#closeCat").onclick=voltar;
   $("#closeCat").focus({preventScroll:true});
+  // barra do topo transparente sobre a capa; fica sólida ao rolar (como na Netflix)
+  const cb=el.querySelector(".cbar"); el.onscroll=()=>cb.classList.toggle("solid", el.scrollTop>80);
   $("#start")?.addEventListener("click",()=>nav(`#${c.slug}/m1`));
   el.querySelectorAll(".mod").forEach(m=>m.onclick=()=>nav(`#${c.slug}/m${+m.dataset.mod+1}`));
   el.querySelectorAll(".rail-wrap").forEach(w=>{
